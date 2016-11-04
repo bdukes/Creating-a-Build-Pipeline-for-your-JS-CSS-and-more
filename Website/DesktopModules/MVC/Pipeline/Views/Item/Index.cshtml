@@ -1,4 +1,5 @@
-﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable< Dnn.Modules.Pipeline.Models.Item>>
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable< Dnn.Modules.Pipeline.Models.Item>>
 
 <div id="Items-@Dnn.ModuleContext.ModuleId">
     @if ((Model==null) || (Model !=null && Model.Count() == 0))
@@ -27,3 +28,7 @@
         </ul>
     }
 </div>
+
+@{
+    ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/Pipeline/Views/Item/Index.js", 10000, "DnnFormBottomProvider");
+}
