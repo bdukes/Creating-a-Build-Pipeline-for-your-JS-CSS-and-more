@@ -148,6 +148,8 @@
     <Content Include="BuildScripts\MSBuild.Community.Tasks.dll" />
     <Content Include="License.html" />
     <Content Include="module.css" />
+    <Content Include="edit.css" />
+    <Content Include="view.css" />
     <Content Include="ReleaseNotes.html" />
   </ItemGroup>
   <ItemGroup>
