@@ -1,55 +1,41 @@
-﻿/*
-' Copyright (c) 2016 Dnn Software
-'  All rights reserved.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-' TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-' THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-' CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-' DEALINGS IN THE SOFTWARE.
-' 
-*/
-
-using DotNetNuke.Web.Mvc.Framework.Controllers;
-using DotNetNuke.Collections;
-using System.Web.Mvc;
-using DotNetNuke.Security;
-using DotNetNuke.Web.Mvc.Framework.ActionFilters;
-
-namespace Dnn.Modules.Pipeline.Controllers
+﻿namespace Dnn.Modules.Pipeline.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
+    using DotNetNuke.Collections;
+    using DotNetNuke.Security;
+    using DotNetNuke.Web.Mvc.Framework.ActionFilters;
+    using DotNetNuke.Web.Mvc.Framework.Controllers;
+    using ValidateAntiForgeryToken = DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryTokenAttribute;
+
     [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
     [DnnHandleError]
     public class SettingsController : DnnController
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         [HttpGet]
         public ActionResult Settings()
         {
-            var settings = new Models.Settings();
-            settings.Setting1 = ModuleContext.Configuration.ModuleSettings.GetValueOrDefault("Pipeline_Setting1", false);
-            settings.Setting2 = ModuleContext.Configuration.ModuleSettings.GetValueOrDefault("Pipeline_Setting2", System.DateTime.Now);
+            var settings = new Models.Settings
+                           {
+                               Setting1 = this.ModuleContext.Configuration.ModuleSettings.GetValueOrDefault("Pipeline_Setting1", false),
+                               Setting2 = this.ModuleContext.Configuration.ModuleSettings.GetValueOrDefault("Pipeline_Setting2", DateTime.Now),
+                           };
 
-            return View(settings);
+            return this.View(settings);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="supportsTokens"></param>
-        /// <returns></returns>
+#pragma warning disable SEC0019 // Missing AntiForgeryToken Attribute
         [HttpPost]
         [ValidateInput(false)]
-        [DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Settings(Models.Settings settings)
+#pragma warning restore SEC0019 // Missing AntiForgeryToken Attribute
         {
-            ModuleContext.Configuration.ModuleSettings["Pipeline_Setting1"] = settings.Setting1.ToString();
-            ModuleContext.Configuration.ModuleSettings["Pipeline_Setting2"] = settings.Setting2.ToUniversalTime().ToString("u");
+            this.ModuleContext.Configuration.ModuleSettings["Pipeline_Setting1"] = settings.Setting1.ToString();
+            this.ModuleContext.Configuration.ModuleSettings["Pipeline_Setting2"] = settings.Setting2.ToUniversalTime().ToString("u");
 
-            return RedirectToDefaultRoute();
+            return this.RedirectToDefaultRoute();
         }
     }
 }

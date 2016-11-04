@@ -1,3 +1,5 @@
-﻿IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Pipeline_Items]') AND type in (N'U'))
-DROP TABLE {databaseOwner}[{objectQualifier}Pipeline_Items]
+﻿IF OBJECT_ID(N'{databaseOwner}[{objectQualifier}Pipeline_Items]') IS NOT NULL
+BEGIN
+	DROP TABLE {databaseOwner}[{objectQualifier}Pipeline_Items];
+END
 GO

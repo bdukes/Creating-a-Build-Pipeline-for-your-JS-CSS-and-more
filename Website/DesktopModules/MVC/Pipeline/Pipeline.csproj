@@ -31,6 +31,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>Pipeline.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\..\bin\Pipeline.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,6 +42,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>Pipeline.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\bin\Pipeline.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetNuke, Version=8.0.4.226, Culture=neutral, processorArchitecture=MSIL">
@@ -64,6 +68,10 @@
     </Reference>
     <Reference Include="DotNetNuke.WebUtility, Version=4.2.1.783, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DotNetNuke.Web.8.0.4.226\lib\net40\DotNetNuke.WebUtility.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -127,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\FeatureController.cs" />
+    <Compile Include="Components\IItemManager.cs" />
     <Compile Include="Components\ItemManager.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Models\Item.cs" />
@@ -137,8 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BuildScripts\MSBuild.Community.Tasks.dll" />
-    <Content Include="Documentation\Documentation.css" />
-    <Content Include="Documentation\Documentation.html" />
     <Content Include="License.html" />
     <Content Include="module.css" />
     <Content Include="ReleaseNotes.html" />
@@ -176,6 +183,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\Item.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pipeline.ruleset" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\Puma.Security.Rules.1.0.2\analyzers\dotnet\cs\Autofac.dll" />
+    <Analyzer Include="packages\Puma.Security.Rules.1.0.2\analyzers\dotnet\cs\Microsoft.Build.dll" />
+    <Analyzer Include="packages\Puma.Security.Rules.1.0.2\analyzers\dotnet\cs\Microsoft.Build.Engine.dll" />
+    <Analyzer Include="packages\Puma.Security.Rules.1.0.2\analyzers\dotnet\cs\Microsoft.Build.Framework.dll" />
+    <Analyzer Include="packages\Puma.Security.Rules.1.0.2\analyzers\dotnet\cs\Microsoft.Build.Tasks.Core.dll" />
+    <Analyzer Include="packages\Puma.Security.Rules.1.0.2\analyzers\dotnet\cs\Microsoft.Build.Utilities.Core.dll" />
+    <Analyzer Include="packages\Puma.Security.Rules.1.0.2\analyzers\dotnet\cs\Microsoft.Web.XmlTransform.dll" />
+    <Analyzer Include="packages\Puma.Security.Rules.1.0.2\analyzers\dotnet\cs\Puma.Security.Rules.dll" />
+    <Analyzer Include="packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

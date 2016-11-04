@@ -1,89 +1,62 @@
-﻿/*
-' Copyright (c) 2015 Christoc.com
-'  All rights reserved.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-' TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-' THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-' CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-' DEALINGS IN THE SOFTWARE.
-' 
-*/
-using System.Collections.Generic;
-using DotNetNuke.Data;
-using DotNetNuke.Framework;
-using Dnn.Modules.Pipeline.Models;
-
-namespace Dnn.Modules.Pipeline.Components
+﻿namespace Dnn.Modules.Pipeline.Components
 {
-    interface IItemManager
-    {
-        void CreateItem(Item t);
-        void DeleteItem(int itemId, int moduleId);
-        void DeleteItem(Item t);
-        IEnumerable<Item> GetItems(int moduleId);
-        Item GetItem(int itemId, int moduleId);
-        void UpdateItem(Item t);
-    }
+    using System;
+    using System.Collections.Generic;
 
-    class ItemManager : ServiceLocator<IItemManager, ItemManager>, IItemManager
+    using Dnn.Modules.Pipeline.Models;
+
+    using DotNetNuke.Data;
+    using DotNetNuke.Framework;
+
+    internal class ItemManager : ServiceLocator<IItemManager, ItemManager>, IItemManager
     {
         public void CreateItem(Item t)
         {
-            using (IDataContext ctx = DataContext.Instance())
+            using (var context = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Item>();
-                rep.Insert(t);
+                context.GetRepository<Item>().Insert(t);
             }
         }
 
         public void DeleteItem(int itemId, int moduleId)
         {
-            var t = GetItem(itemId, moduleId);
-            DeleteItem(t);
+            var item = this.GetItem(itemId, moduleId);
+            this.DeleteItem(item);
         }
 
         public void DeleteItem(Item t)
         {
-            using (IDataContext ctx = DataContext.Instance())
+            using (var context = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Item>();
-                rep.Delete(t);
+                context.GetRepository<Item>().Delete(t);
             }
         }
 
         public IEnumerable<Item> GetItems(int moduleId)
         {
-            IEnumerable<Item> t;
-            using (IDataContext ctx = DataContext.Instance())
+            using (var context = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Item>();
-                t = rep.Get(moduleId);
+                return context.GetRepository<Item>().Get(moduleId);
             }
-            return t;
         }
 
         public Item GetItem(int itemId, int moduleId)
         {
-            Item t;
-            using (IDataContext ctx = DataContext.Instance())
+            using (var context = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Item>();
-                t = rep.GetById(itemId, moduleId);
+                return context.GetRepository<Item>().GetById(itemId, moduleId);
             }
-            return t;
         }
 
         public void UpdateItem(Item t)
         {
-            using (IDataContext ctx = DataContext.Instance())
+            using (var context = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Item>();
-                rep.Update(t);
+                context.GetRepository<Item>().Update(t);
             }
         }
 
-        protected override System.Func<IItemManager> GetFactory()
+        protected override Func<IItemManager> GetFactory()
         {
             return () => new ItemManager();
         }
