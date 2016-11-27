@@ -66,5 +66,6 @@ packages/
 /Website/obj/
 
 /Website/DesktopModules/MVC/Pipeline/install/
+/Website/DesktopModules/MVC/Pipeline/**/module.css
 /Website/DesktopModules/MVC/Pipeline/**/*.min.css
 /Website/DesktopModules/MVC/Pipeline/**/*.min.js

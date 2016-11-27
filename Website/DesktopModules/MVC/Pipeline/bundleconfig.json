@@ -1,0 +1,9 @@
+[
+  {
+    "outputFileName": "module.css",
+    "inputFiles": [
+      "view.css",
+      "edit.css"
+    ]
+  }
+]

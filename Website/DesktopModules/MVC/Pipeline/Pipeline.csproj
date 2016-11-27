@@ -21,6 +21,8 @@
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
     <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -147,8 +149,11 @@
   <ItemGroup>
     <Content Include="BuildScripts\MSBuild.Community.Tasks.dll" />
     <Content Include="License.html" />
-    <Content Include="module.css" />
     <Content Include="edit.css" />
+    <Content Include="module.css" />
+    <Content Include="module.min.css">
+      <DependentUpon>module.css</DependentUpon>
+    </Content>
     <Content Include="view.css" />
     <Content Include="ReleaseNotes.html" />
   </ItemGroup>
@@ -204,6 +209,7 @@
     <Analyzer Include="packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bundleconfig.json" />
     <Content Include="Views\Item\Index.js" />
   </ItemGroup>
   <PropertyGroup>
@@ -232,5 +238,12 @@
   </PropertyGroup>
   <Import Project="BuildScripts\ModulePackage.Targets" />
   <Target Name="AfterBuild" DependsOnTargets="PackageModule">
+  </Target>
+  <Import Project="packages\BuildBundlerMinifier.2.2.301\build\BuildBundlerMinifier.targets" Condition="Exists('packages\BuildBundlerMinifier.2.2.301\build\BuildBundlerMinifier.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\BuildBundlerMinifier.2.2.301\build\BuildBundlerMinifier.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\BuildBundlerMinifier.2.2.301\build\BuildBundlerMinifier.targets'))" />
   </Target>
 </Project>
