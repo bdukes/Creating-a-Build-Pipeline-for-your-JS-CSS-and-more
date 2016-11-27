@@ -5,5 +5,12 @@
       "view.css",
       "edit.css"
     ]
+  },
+  {
+    "outputFileName": "Views/Item/Index.min.js",
+    "inputFiles": [
+      "Views/Shared/Common.js",
+      "Views/Item/Index.js"
+    ]
   }
 ]
