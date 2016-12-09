@@ -9,4 +9,15 @@ module.exports = {
         path: __dirname + '/Website/DesktopModules/MVC/Pipeline',
         filename: '[name].bundle.js',
     },
+    module: {
+        rules: [ {
+            test: /\.js$/,
+            use: [ {
+                loader: 'babel-loader',
+                options: {
+                    presets: [ 'latest', ],
+                },
+            }, ],
+        }, ],
+    },
 };
