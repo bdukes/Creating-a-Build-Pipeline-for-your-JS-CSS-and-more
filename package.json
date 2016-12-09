@@ -1,0 +1,17 @@
+{
+  "name": "pipeline",
+  "version": "1.0.0",
+  "description": "A demonstration of build pipelines for DNN Summit 2017",
+  "main": "webpack.config.js",
+  "repository": "https://github.com/bdukes/build-pipeline-demo",
+  "author": "Brian Dukes <bdukes@engagesoftware.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "beta"
+  },
+  "dependencies": {},
+  "scripts": {
+    "bundle": "webpack",
+    "bundle:prod": "webpack -p"
+  }
+}
