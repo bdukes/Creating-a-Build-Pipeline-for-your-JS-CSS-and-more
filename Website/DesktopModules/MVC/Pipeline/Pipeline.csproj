@@ -147,6 +147,7 @@
   <ItemGroup>
     <Content Include="BuildScripts\MSBuild.Community.Tasks.dll" />
     <Content Include="License.html" />
+    <Content Include="Module.scss" />
     <None Include="Views\Item\Edit.scss" />
     <Content Include="Views\Item\Edit.js" />
     <None Include="Views\Item\Index.scss" />

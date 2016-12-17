@@ -1,7 +1,6 @@
 /*global jQuery */
 
 import { getRandomColor, isValidColor, } from '../Shared/Common.js';
-import './Index.scss';
 
 const $ = jQuery;
 const $items = $('.tm_t');

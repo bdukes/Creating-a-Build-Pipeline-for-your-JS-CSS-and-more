@@ -11,9 +11,9 @@
     "babel-loader": "^6.2.9",
     "babel-preset-latest": "^6.16.0",
     "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "beta",
     "node-sass": "^4.0.0",
     "sass-loader": "^4.1.0",
-    "style-loader": "^0.13.1",
     "webpack": "beta"
   },
   "dependencies": {},
