@@ -1,1 +1,1 @@
-import './Edit.css';
+import './Edit.scss';

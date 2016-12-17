@@ -1,0 +1,5 @@
+@import '../Shared/Variables';
+.tm_tl {
+    box-shadow: $accent-color 0.5em 0.5em 0.5em 0.5em;
+    padding: 0 $padding__default;
+}
