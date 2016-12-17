@@ -147,9 +147,9 @@
   <ItemGroup>
     <Content Include="BuildScripts\MSBuild.Community.Tasks.dll" />
     <Content Include="License.html" />
-    <Content Include="module.css" />
-    <Content Include="edit.css" />
-    <Content Include="view.css" />
+    <Content Include="Views\Item\Edit.css" />
+    <Content Include="Views\Item\Edit.js" />
+    <Content Include="Views\Item\Index.css" />
     <Content Include="ReleaseNotes.html" />
   </ItemGroup>
   <ItemGroup>
