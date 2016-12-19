@@ -18,7 +18,8 @@
   },
   "dependencies": {},
   "scripts": {
-    "bundle:prod": "webpack -p"
     "bundle": "webpack -d",
+    "bundle:prod": "webpack -p",
+    "start": "webpack -d --watch"
   }
 }
