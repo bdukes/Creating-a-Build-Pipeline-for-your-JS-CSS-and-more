@@ -18,7 +18,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "bundle": "webpack",
     "bundle:prod": "webpack -p"
+    "bundle": "webpack -d",
   }
 }
