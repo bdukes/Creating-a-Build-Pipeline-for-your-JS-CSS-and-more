@@ -2,8 +2,8 @@
   {
     "outputFileName": "module.css",
     "inputFiles": [
-      "view.css",
-      "edit.css"
+      "Views/Item/Edit.scss",
+      "Views/Item/Index.scss"
     ]
   },
   {

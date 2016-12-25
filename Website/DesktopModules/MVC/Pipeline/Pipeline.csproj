@@ -154,10 +154,10 @@
     <Content Include=".babelrc" />
     <None Include="gulpfile.js" />
     <Content Include="License.html" />
-    <Content Include="edit.css" />
-    <Content Include="module.css" />
-    <Content Include="view.css" />
+    <None Include="Views\Item\Edit.scss" />
+    <None Include="Views\Item\Index.scss" />
     <Content Include="ReleaseNotes.html" />
+    <Content Include="Views\Shared\Variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pipeline.dnn">

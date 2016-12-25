@@ -8,6 +8,7 @@ var gulp = require("gulp"),
     uglify = require("gulp-uglify"),
     babel = require("gulp-babel"),
     sourcemaps = require("gulp-sourcemaps"),
+    sass = require("gulp-sass"),
     merge = require("merge-stream"),
     del = require("del"),
     bundleconfig = require("./bundleconfig.json");
@@ -37,6 +38,7 @@ gulp.task("min:css", function () {
     var tasks = getBundles(regex.css).map(function (bundle) {
         return gulp.src(bundle.inputFiles, { base: "." })
             .pipe(sourcemaps.init())
+            .pipe(sass().on('error', sass.logError))
             .pipe(concat(bundle.outputFileName))
             .pipe(cssmin())
             .pipe(sourcemaps.write('.'))
