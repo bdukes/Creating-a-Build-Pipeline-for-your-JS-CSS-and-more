@@ -1,4 +1,8 @@
-﻿<div id="mvcContainer-@Dnn.ActiveModule.ModuleID">
+﻿@using DotNetNuke.Framework.JavaScriptLibraries
+<div id="mvcContainer-@Dnn.ActiveModule.ModuleID">
     @RenderBody()
 </div>
 
+@{
+    JavaScript.RequestRegistration("lie"); // Promise polyfill
+}
