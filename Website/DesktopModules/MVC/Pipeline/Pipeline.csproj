@@ -148,12 +148,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BuildScripts\MSBuild.Community.Tasks.dll" />
+    <Content Include="bundleconfig.json.bindings">
+      <DependentUpon>bundleconfig.json</DependentUpon>
+    </Content>
+    <None Include="gulpfile.js" />
     <Content Include="License.html" />
     <Content Include="edit.css" />
     <Content Include="module.css" />
-    <Content Include="module.min.css">
-      <DependentUpon>module.css</DependentUpon>
-    </Content>
     <Content Include="view.css" />
     <Content Include="ReleaseNotes.html" />
   </ItemGroup>
@@ -178,9 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Common.js" />
-    <Content Include="Views\Item\Index.min.js">
-      <DependentUpon>Index.js</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
@@ -214,6 +212,7 @@
   <ItemGroup>
     <None Include="bundleconfig.json" />
     <Content Include="Views\Item\Index.js" />
+    <None Include="package.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
