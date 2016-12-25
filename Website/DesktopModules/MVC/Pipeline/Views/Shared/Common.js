@@ -14,10 +14,8 @@ void function defineCommonFunctions($) {
         var r = getRandomIntInclusive(0, 255);
         var g = getRandomIntInclusive(0, 255);
         var b = getRandomIntInclusive(0, 255);
-        return 'rgb(' + r + ',' + g + ',' + b + ')';
+        return `rgb(${r},${g},${b})`;
     }
-    
-    window.isValidColor = function isValidColor (color) {
-        return /rgb\(\d+,\s*\d+,\s*\d+\)/.test(color);
-    }
+
+    window.isValidColor = (color) => /rgb\(\d+,\s*\d+,\s*\d+\)/.test(color);
 }(jQuery);
