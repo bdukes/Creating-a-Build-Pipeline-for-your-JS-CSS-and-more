@@ -1,6 +1,7 @@
 ﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Dnn.Modules.Pipeline.Models.Item>
 
 @using System.Collections.Generic
+@using DotNetNuke.Web.Client.ClientResourceManagement
 @using DotNetNuke.Web.Mvc.Helpers
 
 <div id="Item-@Dnn.ModuleContext.ModuleId">
@@ -48,3 +49,7 @@
 
     }(jQuery, window.Sys));
 </script>
+
+@{
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/Pipeline/edit.css");
+}

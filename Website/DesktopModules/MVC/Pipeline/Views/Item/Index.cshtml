@@ -30,6 +30,7 @@
 </div>
 
 @{
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/Pipeline/view.css");
     ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/Pipeline/Views/Shared/Common.js", 10000, "DnnFormBottomProvider");
     ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/Pipeline/Views/Item/Index.js", 10001, "DnnFormBottomProvider");
 }
