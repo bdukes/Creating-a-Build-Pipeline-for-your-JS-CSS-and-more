@@ -68,3 +68,4 @@ packages/
 /Website/DesktopModules/MVC/Pipeline/install/
 /Website/DesktopModules/MVC/Pipeline/**/*.min.css
 /Website/DesktopModules/MVC/Pipeline/**/*.min.js
+node_modules/
