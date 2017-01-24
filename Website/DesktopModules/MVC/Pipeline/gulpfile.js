@@ -9,6 +9,7 @@ var gulp = require("gulp"),
     babel = require("gulp-babel"),
     sourcemaps = require("gulp-sourcemaps"),
     sass = require("gulp-sass"),
+    imagemin = require("gulp-imagemin"),
     merge = require("merge-stream"),
     del = require("del"),
     bundleconfig = require("./bundleconfig.json");
@@ -19,7 +20,13 @@ var regex = {
     js: /\.js$/
 };
 
-gulp.task("min", ["min:js", "min:css", "min:html"]);
+gulp.task("min", ["min:js", "min:css", "min:html", "min:images"]);
+
+gulp.task('min:images', function () {
+    return gulp.src(['**/*.png', '**/*.jpg', '**/*.gif', '**/*.svg',])
+        .pipe(imagemin())
+        .pipe(gulp.dest('.'));
+});
 
 gulp.task("min:js", function () {
     var tasks = getBundles(regex.js).map(function (bundle) {
